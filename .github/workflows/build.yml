@@ -7,7 +7,7 @@ jobs:
   build-linux:
     strategy:
       matrix:
-        build_type: [ Debug, Release ]
+        build_type: [ Release ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -33,7 +33,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: p2-publishing-tool-linux-${{matrix.build_type}}
+          name: 32fp2hdr-linux-${{matrix.build_type}}
           path: |
             ${{github.workspace}}/build/32fp2hdr
             ${{github.workspace}}/build/platforms/*.so*
@@ -76,7 +76,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: p2-publishing-tool-windows-${{matrix.build_type}}
+          name: 32fp2hdr-windows-${{matrix.build_type}}
           path: |
             ${{github.workspace}}\build\*.exe
             ${{github.workspace}}\build\*.dll
