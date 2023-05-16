@@ -52,6 +52,10 @@ MainWindow::MainWindow() : QDialog()
 
     connect(m_pFileButton, &QPushButton::pressed, this, [&]{
         auto filePath = QFileDialog::getOpenFileName(this, "Open Float File","./","Float file (*.txt)" );
+
+        if(filePath.isEmpty())
+            return;
+
         QFile file(filePath);
         file.open(QFile::ReadOnly);
 
