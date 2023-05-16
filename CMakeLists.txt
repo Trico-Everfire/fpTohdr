@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(32fp2hdr)
+project(fpToHDR)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
@@ -45,14 +45,14 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(32fp2hdr src/main.cpp
+add_executable(fpToHDR src/main.cpp
         src/filesystem.cpp
         src/filesystem.h
         src/filesystem.h
         src/MainWindow.cpp
         src/MainWindow.h)
 
-target_link_libraries(32fp2hdr
+target_link_libraries(fpToHDR
         Qt::Core
         Qt::Gui
         Qt::Widgets
