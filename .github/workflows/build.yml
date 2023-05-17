@@ -19,13 +19,13 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
-          version: 5.12.2
+          version: 5.15.2
           host: linux
           target: desktop
           dir: '${{github.workspace}}/libs/Qt'
 
       - name: Configure CMake
-        run: cmake -G "Unix Makefiles" -B build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DQT_BASEDIR='${{github.workspace}}/libs/Qt/Qt/5.12.2/gcc_64'
+        run: cmake -G "Unix Makefiles" -B build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DQT_BASEDIR='${{github.workspace}}/libs/Qt/Qt/5.15.2/gcc_64'
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
@@ -59,7 +59,7 @@ jobs:
         with:
           dir: '${{github.workspace}}/libs/Qt'
 
-          version: 5.12.2
+          version: 5.15.2
           arch: win64_msvc2019_64
 
       - name: Set up MSVC
@@ -68,7 +68,7 @@ jobs:
       - name: Configure CMake
         env:
           CMAKE_PREFIX_PATH: ${{env.Qt6_Dir}}
-        run: cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DQT_BASEDIR=${{github.workspace}}\libs\Qt\Qt\5.12.2\msvc2019_64
+        run: cmake -G "Ninja" -B build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DQT_BASEDIR=${{github.workspace}}\libs\Qt\Qt\5.15.2\msvc2019_64
 
       - name: Build
         run: cmake --build build --config ${{matrix.build_type}}
