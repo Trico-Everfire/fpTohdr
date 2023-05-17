@@ -80,6 +80,11 @@ MainWindow::MainWindow() : QDialog()
     connect(m_pSaveFileButton, &QPushButton::pressed, this, [&]{
 
 
+        auto filePath = QFileDialog::getSaveFileName(this, "Save HDR File","./","HDR File (*.hdr)" );
+
+        if(filePath.isEmpty())
+            return;
+
         auto list = m_pFileEdit->toPlainText().split('\n');
 
         uint width = m_pImageWidthSpinbox->value();
@@ -112,7 +117,7 @@ MainWindow::MainWindow() : QDialog()
             CFIleSystem::rotate90Degrees(handle);
         }
 
-        CFIleSystem::writeHDR("/home/trico/Documents/GithubProjects/32fp2hdr/256floats.hdr", handle);
+        CFIleSystem::writeHDR(filePath.toUtf8().constData(), handle);
 
 
     });
