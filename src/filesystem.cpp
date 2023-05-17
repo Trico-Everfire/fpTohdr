@@ -107,7 +107,7 @@ CFIleSystem::createHandle(Format format, unsigned int width, unsigned int height
         if (v < 1e-32) {
             form.r = form.g = form.b = form.exponent = static_cast<std::byte>(0);
         } else {
-            v = frexp(v, &e) * 256.0 / v;
+            v = std::frexp(v, &e) * 256.0 / v;
             form.r = static_cast<std::byte>(red[i] * v);
             form.g = static_cast<std::byte>(green[i] * v);
             form.b = static_cast<std::byte>(blue[i] * v);
@@ -138,7 +138,7 @@ void CFIleSystem::flipVertical(CFIleSystem::FP32HDRHandle &handle, bool flip) {
 void CFIleSystem::rotate90Degrees(CFIleSystem::FP32HDRHandle &handle)
 {
 
-    int size = sqrt(handle.width * handle.height);
+    int size = std::sqrt(handle.width * handle.height);
     auto result = std::vector<PixFormat>(handle.width * handle.height);
 
     for (int i = 0; i < size; ++i)
