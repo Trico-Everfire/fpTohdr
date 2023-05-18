@@ -65,6 +65,8 @@ MainWindow::MainWindow() : QDialog()
         auto list = data.split('\n');
         for(int i = 0; i < list.count() ; i++)
         {
+            if(list[i].isEmpty())
+                continue;
            bool isOk;
             list[i].toFloat(&isOk);
             if(!isOk) {
@@ -101,6 +103,8 @@ MainWindow::MainWindow() : QDialog()
 
         for(int i = 0; i < list.count() ; i++)
         {
+            if(list[i].isEmpty())
+                continue;
             bool isOk;
             redData[i] = list[i].toFloat(&isOk);
             restData[i] = 0;
